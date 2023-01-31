@@ -1,5 +1,16 @@
-import { ArrowSquareOut } from 'phosphor-react'
-import { Container, Description, Header, Image, Link, Name } from './styles'
+import { ArrowSquareOut, Buildings, GithubLogo, Users } from 'phosphor-react'
+
+import { Info } from '../Info'
+import {
+  Container,
+  Description,
+  Footer,
+  Header,
+  Image,
+  Link,
+  Name,
+  Bio,
+} from './styles'
 
 export function UserCard() {
   return (
@@ -7,18 +18,27 @@ export function UserCard() {
       <div>
         <Header>
           <Image src="https://github.com/murilo-souza.png" alt="" />
-          <Name>Murilo Souza</Name>
+          <Bio>
+            <Name>Murilo Souza</Name>
+            <Description>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+              qui, facilis molestias itaque modi deleniti animi eos tempore
+              voluptate vel distinctio, explicabo, quos dolores eligendi non
+              eius. Necessitatibus, nihil nam?
+            </Description>
+            <Footer>
+              <Info title="murilo-souza" icon={GithubLogo} />
+              <Info title="murilo-souza" icon={Buildings} />
+              <Info title="13 seguidores" icon={Users} />
+            </Footer>
+          </Bio>
         </Header>
         <Link>
-          GITHUB <ArrowSquareOut />
+          GITHUB
+          <ArrowSquareOut />
         </Link>
       </div>
-      <Description>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-        tempore earum et optio aspernatur quisquam consequuntur cumque quo
-        labore reprehenderit ea, dicta quam cum, nemo eos temporibus blanditiis
-        rem hic?
-      </Description>
     </Container>
   )
 }

@@ -1,10 +1,15 @@
+import { PostCard } from '../../components/PostCard'
 import { UserCard } from '../../components/UserCard'
-import { Container } from './styles'
+import { Container, Posts } from './styles'
 
 export function Home() {
   return (
     <Container>
       <UserCard />
+      <Posts>
+        <PostCard />
+        <PostCard />
+      </Posts>
     </Container>
   )
 }

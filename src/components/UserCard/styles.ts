@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  margin-top: -4.5rem;
+  margin-bottom: 5rem;
+
   width: 100%;
   height: 13.25rem;
 
@@ -17,12 +20,12 @@ export const Container = styled.div`
   }
 `
 export const Image = styled.img`
-  width: 9.25rem;
-  height: 9.25rem;
+  width: 35%;
+  height: 35%;
 
   border-radius: 8px;
 
-  background-color: ${(props) => props.theme.baseInput};
+  /* background-color: ${(props) => props.theme.baseInput}; */
 
   overflow: hidden;
 `
@@ -34,14 +37,22 @@ export const Header = styled.header`
   gap: 2rem;
 `
 
+export const Bio = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 export const Name = styled.h1`
   font-size: 1.5rem;
   color: ${(props) => props.theme.baseTitle};
+  margin-bottom: 0.5rem;
 `
 
 export const Description = styled.h2`
   font-size: 1rem;
+  font-weight: 400;
   color: ${(props) => props.theme.baseText};
+  margin-bottom: 1.5rem;
 `
 
 export const Link = styled.a`
@@ -49,7 +60,15 @@ export const Link = styled.a`
   font-size: 0.75rem;
 
   svg {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
+`
+
+export const Footer = styled.div`
+  max-width: 30rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
