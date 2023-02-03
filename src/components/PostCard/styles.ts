@@ -18,8 +18,8 @@ export const Top = styled.section`
 
 export const Title = styled.h1`
   font-size: 1.25rem;
-  color: ${(props)=>props.theme.baseTitle}
 
+  color: ${(props)=>props.theme.baseTitle}
 `
 
 export const Description = styled.p`
