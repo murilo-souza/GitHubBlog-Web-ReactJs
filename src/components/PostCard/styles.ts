@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.a`
   width: 100%;
 
   background-color: ${(props) => props.theme.basePost};
@@ -10,6 +10,15 @@ export const Container = styled.div`
   padding: 2rem;
 
   margin-bottom: 1rem;
+
+  cursor: pointer;
+
+  border: 2px solid ${(props) => props.theme.basePost};
+
+  :hover {
+    border: 2px solid ${(props) => props.theme.baseLabel};
+    transform: 0.2s border;
+  }
 `
 
 export const Top = styled.section`
