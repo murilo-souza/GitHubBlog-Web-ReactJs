@@ -35,8 +35,7 @@ export function UserCard() {
           </Bio>
         </Header>
         <Link>
-          GITHUB
-          <ArrowSquareOut />
+          GITHUB <ArrowSquareOut />
         </Link>
       </div>
     </Container>

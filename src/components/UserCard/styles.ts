@@ -59,9 +59,18 @@ export const Link = styled.a`
   color: ${(props) => props.theme.blue};
   font-size: 0.75rem;
 
+  white-space: nowrap;
+
+  cursor: pointer;
+
   svg {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  :hover {
+    border-bottom: 1px solid ${(props) => props.theme.blue};
+    transition: 0.2s border-bottom;
   }
 `
 
