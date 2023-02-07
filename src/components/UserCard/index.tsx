@@ -12,29 +12,41 @@ import {
   Bio,
 } from './styles'
 
-export function UserCard() {
+interface UserCardProps {
+  imgUrl: string
+  name: string
+  description: string
+  info1: string
+  info2: string | null
+  info3: string | number
+  githubLink: string
+}
+
+export function UserCard({
+  imgUrl,
+  name,
+  description,
+  info1,
+  info2,
+  info3,
+  githubLink,
+}: UserCardProps) {
   return (
     <Container>
       <div>
         <Header>
-          <Image src="https://github.com/murilo-souza.png" alt="" />
+          <Image src={imgUrl} alt="" />
           <Bio>
-            <Name>Murilo Souza</Name>
-            <Description>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-              qui, facilis molestias itaque modi deleniti animi eos tempore
-              voluptate vel distinctio, explicabo, quos dolores eligendi non
-              eius. Necessitatibus, nihil nam?
-            </Description>
+            <Name>{name}</Name>
+            <Description>{description}</Description>
             <Footer>
-              <Info title="murilo-souza" icon={GithubLogo} />
-              <Info title="murilo-souza" icon={Buildings} />
-              <Info title="13 seguidores" icon={Users} />
+              <Info title={info1} icon={GithubLogo} />
+              <Info title={info2} icon={Buildings} />
+              <Info title={info3} icon={Users} />
             </Footer>
           </Bio>
         </Header>
-        <Link>
+        <Link href={githubLink}>
           GITHUB <ArrowSquareOut />
         </Link>
       </div>

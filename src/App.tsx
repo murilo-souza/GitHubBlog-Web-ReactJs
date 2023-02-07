@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { GithubContextProvider } from './hooks/useGithubData'
 import { Router } from './Router'
 import { GlobalStyles } from './styles/global'
 import { theme } from './styles/themes/defaultTheme'
@@ -9,7 +10,9 @@ export function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <BrowserRouter>
-        <Router />
+        <GithubContextProvider>
+          <Router />
+        </GithubContextProvider>
       </BrowserRouter>
     </ThemeProvider>
   )

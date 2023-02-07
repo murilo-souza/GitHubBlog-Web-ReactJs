@@ -20,8 +20,8 @@ export const Container = styled.div`
   }
 `
 export const Image = styled.img`
-  width: 35%;
-  height: 35%;
+  width: 20%;
+  height: 20%;
 
   border-radius: 8px;
 
@@ -32,8 +32,7 @@ export const Image = styled.img`
 
 export const Header = styled.header`
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 2rem;
 `
 

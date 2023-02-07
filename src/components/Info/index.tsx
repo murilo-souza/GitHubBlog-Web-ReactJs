@@ -3,7 +3,7 @@ import { ElementType } from 'react'
 import { Container, Title } from './styles'
 
 interface Props {
-  title: string
+  title: string | number | null
   icon: ElementType<IconProps>
 }
 
