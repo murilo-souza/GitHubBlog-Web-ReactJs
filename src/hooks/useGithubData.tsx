@@ -27,6 +27,7 @@ export interface PostCard {
 interface GithubContextData {
   user: User
   postCard: PostCard[]
+  getInputValue: (value: string) => void
 }
 
 interface ContextProviderProps {
@@ -38,6 +39,11 @@ export const GithubContext = createContext({} as GithubContextData)
 export function GithubContextProvider({ children }: ContextProviderProps) {
   const [user, setUser] = useState({} as User)
   const [postCard, setPostCard] = useState<PostCard[]>([])
+  const [search, setSearch] = useState('')
+
+  function getInputValue(value: string) {
+    setSearch(value)
+  }
 
   async function handleUserCardData() {
     const userData = await api.get('/users/murilo-souza')
@@ -46,21 +52,21 @@ export function GithubContextProvider({ children }: ContextProviderProps) {
 
   async function handlePostCardData() {
     const postData = await api.get(
-      '/search/issues?q=%20repo:murilo-souza/GithubBlog-Web-ReactJs',
+      `/search/issues?q=${search}%20repo:murilo-souza/GithubBlog-Web-ReactJs`,
     )
 
     setPostCard(postData.data.items)
-    console.log(postCard)
   }
 
   useEffect(() => {
     handleUserCardData()
 
     handlePostCardData()
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search])
 
   return (
-    <GithubContext.Provider value={{ user, postCard }}>
+    <GithubContext.Provider value={{ user, postCard, getInputValue }}>
       {children}
     </GithubContext.Provider>
   )
