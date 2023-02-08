@@ -25,8 +25,6 @@ export const Image = styled.img`
 
   border-radius: 8px;
 
-  /* background-color: ${(props) => props.theme.baseInput}; */
-
   overflow: hidden;
 `
 
@@ -59,6 +57,8 @@ export const Link = styled.a`
   font-size: 0.75rem;
 
   white-space: nowrap;
+
+  text-decoration: none;
 
   cursor: pointer;
 

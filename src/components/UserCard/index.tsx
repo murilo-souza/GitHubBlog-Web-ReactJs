@@ -17,8 +17,8 @@ interface UserCardProps {
   name: string
   description: string
   info1: string
-  info2: string | null
-  info3: string | number
+  info2: string | undefined
+  info3: number
   githubLink: string
 }
 
@@ -41,8 +41,18 @@ export function UserCard({
             <Description>{description}</Description>
             <Footer>
               <Info title={info1} icon={GithubLogo} />
-              <Info title={info2} icon={Buildings} />
-              <Info title={info3} icon={Users} />
+              {info2 === undefined ? (
+                <Info title={info2} icon={Buildings} />
+              ) : (
+                <></>
+              )}
+
+              <Info
+                title={
+                  info3 === 1 ? `${info3} seguidor` : `${info3} seguidores`
+                }
+                icon={Users}
+              />
             </Footer>
           </Bio>
         </Header>

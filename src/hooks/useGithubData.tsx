@@ -17,8 +17,16 @@ interface User {
   html_url: string
 }
 
+export interface PostCard {
+  id: number
+  title: string
+  body: string
+  created_at: Date
+}
+
 interface GithubContextData {
   user: User
+  postCard: PostCard[]
 }
 
 interface ContextProviderProps {
@@ -29,28 +37,32 @@ export const GithubContext = createContext({} as GithubContextData)
 
 export function GithubContextProvider({ children }: ContextProviderProps) {
   const [user, setUser] = useState({} as User)
+  const [postCard, setPostCard] = useState<PostCard[]>([])
 
   async function handleUserCardData() {
-    const response = await api.get('/users/murilo-souza')
+    const userData = await api.get('/users/murilo-souza')
+    setUser(userData.data)
+  }
 
-    setUser({
-      avatar_url: response.data.avatar_url,
-      bio: response.data.bio,
-      company: response.data.company,
-      followers: response.data.followers,
-      login: response.data.login,
-      name: response.data.name,
-      html_url: response.data.html_url,
-    })
-    console.log(user)
+  async function handlePostCardData() {
+    const postData = await api.get(
+      '/search/issues?q=%20repo:murilo-souza/GithubBlog-Web-ReactJs',
+    )
+
+    setPostCard(postData.data.items)
+    console.log(postCard)
   }
 
   useEffect(() => {
     handleUserCardData()
-  })
+
+    handlePostCardData()
+  }, [])
 
   return (
-    <GithubContext.Provider value={{ user }}>{children}</GithubContext.Provider>
+    <GithubContext.Provider value={{ user, postCard }}>
+      {children}
+    </GithubContext.Provider>
   )
 }
 

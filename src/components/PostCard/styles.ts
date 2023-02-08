@@ -23,9 +23,10 @@ export const Container = styled.a`
 
 export const Top = styled.section`
   display: flex;
-  justify-content: space-beetwen;
+  justify-content: space-between;
   align-items: flex-start;
 
+  gap: 2rem;
   margin-bottom: 2rem;
 `
 
