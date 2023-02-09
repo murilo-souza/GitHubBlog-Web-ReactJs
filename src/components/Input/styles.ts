@@ -32,12 +32,16 @@ export const InputText = styled.input`
   border: 1px solid ${(props) => props.theme.baseBorder};
 
   background-color: ${(props) => props.theme.baseInput};
-  color: ${(props) => props.theme.baseLabel};
+  color: ${(props) => props.theme.baseText};
 
   padding: 1rem 0.75rem;
 
   font-size: 1rem;
   font-weight: 400;
+
+  ::placeholder {
+    color: ${(props) => props.theme.baseLabel};
+  }
 
   :focus {
     border: 1px solid ${(props) => props.theme.blue};

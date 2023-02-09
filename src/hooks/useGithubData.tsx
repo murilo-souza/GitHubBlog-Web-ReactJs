@@ -24,8 +24,15 @@ export interface PostCard {
   created_at: Date
 }
 
+interface Post extends PostCard {
+  slug: number
+  comments: string
+  html_url: string
+}
+
 interface GithubContextData {
   user: User
+  post: Post
   postCard: PostCard[]
   getInputValue: (value: string) => void
 }
@@ -38,6 +45,7 @@ export const GithubContext = createContext({} as GithubContextData)
 
 export function GithubContextProvider({ children }: ContextProviderProps) {
   const [user, setUser] = useState({} as User)
+  const [post, setPost] = useState({} as Post)
   const [postCard, setPostCard] = useState<PostCard[]>([])
   const [search, setSearch] = useState('')
 
@@ -52,21 +60,30 @@ export function GithubContextProvider({ children }: ContextProviderProps) {
 
   async function handlePostCardData() {
     const postData = await api.get(
-      `/search/issues?q=${search}%20repo:murilo-souza/GithubBlog-Web-ReactJs`,
+      `/search/issues?q=${search}%20repo:murilo-souza/GitHubBlog-Web-ReactJs`,
     )
 
     setPostCard(postData.data.items)
   }
 
+  async function handleCompletePost(slug: number) {
+    const post = await api.get(
+      `/repos/murilo-souza/GitHubBlog-Web-ReactJs/issues/${slug}`,
+    )
+
+    setPost(post.data)
+    console.log(post)
+  }
+
   useEffect(() => {
     handleUserCardData()
-
+    handleCompletePost(post.slug)
     handlePostCardData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
   return (
-    <GithubContext.Provider value={{ user, postCard, getInputValue }}>
+    <GithubContext.Provider value={{ user, post, postCard, getInputValue }}>
       {children}
     </GithubContext.Provider>
   )
