@@ -1,25 +1,20 @@
 /* eslint-disable camelcase */
-import { useNavigate } from 'react-router-dom'
 import { Container, Content, TimePast, Title, Top } from './styles'
 
 interface PostCardProps {
   title: string
   body: string
+  number: number
   created_at: string
 }
 
-export function PostCard({ title, body, created_at }: PostCardProps) {
+export function PostCard({ title, body, number, created_at }: PostCardProps) {
   const content = `${body}`
 
   const contentFormatted = content.slice(0, 210) + '...'
-  const navigate = useNavigate()
-
-  function handleNavigateToPost() {
-    navigate('/Post')
-  }
 
   return (
-    <Container onClick={handleNavigateToPost}>
+    <Container to={`post/${number}`}>
       <Top>
         <Title>{title}</Title>
         <TimePast>{created_at}</TimePast>

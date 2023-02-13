@@ -34,6 +34,7 @@ export function Home() {
               key={post.id}
               title={post.title}
               body={post.body}
+              number={post.number}
               created_at={publishedDateRelativeToNow}
             />
           )

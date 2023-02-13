@@ -21,13 +21,16 @@ export interface PostCard {
   id: number
   title: string
   body: string
+  number: number
   created_at: Date
 }
 
 interface Post extends PostCard {
-  slug: number
-  comments: string
+  comments: number
   html_url: string
+  user: {
+    login: string
+  }
 }
 
 interface GithubContextData {
@@ -35,6 +38,7 @@ interface GithubContextData {
   post: Post
   postCard: PostCard[]
   getInputValue: (value: string) => void
+  handleCompletePost: (slug: any) => void
 }
 
 interface ContextProviderProps {
@@ -49,7 +53,7 @@ export function GithubContextProvider({ children }: ContextProviderProps) {
   const [postCard, setPostCard] = useState<PostCard[]>([])
   const [search, setSearch] = useState('')
 
-  function getInputValue(value: string) {
+  function getInputValue(value: string = '') {
     setSearch(value)
   }
 
@@ -60,15 +64,15 @@ export function GithubContextProvider({ children }: ContextProviderProps) {
 
   async function handlePostCardData() {
     const postData = await api.get(
-      `/search/issues?q=${search}%20repo:murilo-souza/GitHubBlog-Web-ReactJs`,
+      `/search/issues?q=${search}%20repo:murilo-souza/github-blog-web-reactjs`,
     )
 
     setPostCard(postData.data.items)
   }
 
-  async function handleCompletePost(slug: number) {
+  async function handleCompletePost(slug: any) {
     const post = await api.get(
-      `/repos/murilo-souza/GitHubBlog-Web-ReactJs/issues/${slug}`,
+      `/repos/murilo-souza/github-blog-web-reactjs/issues/${slug}`,
     )
 
     setPost(post.data)
@@ -77,13 +81,14 @@ export function GithubContextProvider({ children }: ContextProviderProps) {
 
   useEffect(() => {
     handleUserCardData()
-    handleCompletePost(post.slug)
     handlePostCardData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
   return (
-    <GithubContext.Provider value={{ user, post, postCard, getInputValue }}>
+    <GithubContext.Provider
+      value={{ user, post, postCard, getInputValue, handleCompletePost }}
+    >
       {children}
     </GithubContext.Provider>
   )

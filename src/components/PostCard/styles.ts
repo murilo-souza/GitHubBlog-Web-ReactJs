@@ -1,7 +1,10 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const Container = styled.a`
+export const Container = styled(NavLink)`
   width: 100%;
+
+  text-decoration: none;
 
   background-color: ${(props) => props.theme.basePost};
 

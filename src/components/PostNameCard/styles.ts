@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -18,6 +19,27 @@ export const Container = styled.div`
 `
 
 export const HighlightText = styled.a`
+  text-decoration: none;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.blue};
+
+  font-size: 0.75rem;
+  font-weight: 400;
+
+  margin-bottom: 1.25rem;
+
+  cursor: pointer;
+
+  border-bottom: 1px solid ${(props) => props.theme.baseProfile};
+
+  :hover {
+    border-bottom: 1px solid ${(props) => props.theme.blue};
+    transition: 0.2s border-bottom;
+  }
+`
+
+export const Back = styled(NavLink)`
+  text-decoration: none;
   text-transform: uppercase;
   color: ${(props) => props.theme.blue};
 
