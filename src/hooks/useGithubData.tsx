@@ -17,7 +17,7 @@ interface User {
   html_url: string
 }
 
-export interface PostCard {
+interface PostCard {
   id: number
   title: string
   body: string
@@ -25,7 +25,7 @@ export interface PostCard {
   created_at: Date
 }
 
-interface Post extends PostCard {
+export interface Post extends PostCard {
   comments: number
   html_url: string
   user: {

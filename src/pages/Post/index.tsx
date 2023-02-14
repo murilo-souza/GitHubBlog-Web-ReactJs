@@ -14,7 +14,13 @@ export function Post() {
 
   return (
     <Container>
-      <PostNameCard />
+      <PostNameCard
+        title={post.title}
+        comments={post.comments}
+        created_at={post.created_at}
+        html_url={post.html_url}
+        user={post.user}
+      />
       <PostContent>{post.body}</PostContent>
     </Container>
   )
