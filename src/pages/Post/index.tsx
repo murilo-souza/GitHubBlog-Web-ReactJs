@@ -17,7 +17,6 @@ export function Post() {
 
   return (
     <Container>
-<<<<<<< HEAD
       {post.created_at === undefined ? (
         <div></div>
       ) : (
@@ -34,16 +33,6 @@ export function Post() {
           </PostContent>
         </>
       )}
-=======
-      <PostNameCard
-        title={post.title}
-        comments={post.comments}
-        created_at={post.created_at}
-        html_url={post.html_url}
-        user={post.user}
-      />
-      <PostContent>{post.body}</PostContent>
->>>>>>> 576c3a77ff4adaf28a06cd0bae280b1710f339d2
     </Container>
   )
 }
