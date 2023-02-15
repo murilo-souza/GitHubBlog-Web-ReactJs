@@ -8,8 +8,6 @@ import {
   ChatCircle,
   GithubLogo,
 } from 'phosphor-react'
-import { formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 
 interface PostDetail {
   title: string
@@ -18,7 +16,7 @@ interface PostDetail {
   user: {
     login: string
   }
-  created_at: Date
+  created_at: string
 }
 
 export function PostNameCard({
@@ -28,13 +26,6 @@ export function PostNameCard({
   user,
   created_at,
 }: PostDetail) {
-  const date = new Date(created_at)
-
-  const publishedDateRelativeToNow = formatDistanceToNow(date, {
-    locale: ptBR,
-    addSuffix: true,
-  })
-
   return (
     <Container>
       <div>
@@ -48,7 +39,7 @@ export function PostNameCard({
       <Title>{title}</Title>
       <InfoArea>
         <Info title={user.login} icon={GithubLogo} />
-        <Info title={publishedDateRelativeToNow} icon={Calendar} />
+        <Info title={created_at} icon={Calendar} />
         <Info title={`${comments} comentários`} icon={ChatCircle} />
       </InfoArea>
     </Container>

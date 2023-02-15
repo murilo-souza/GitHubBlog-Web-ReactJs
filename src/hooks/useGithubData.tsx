@@ -22,7 +22,7 @@ interface PostCard {
   title: string
   body: string
   number: number
-  created_at: Date
+  created_at: string
 }
 
 export interface Post extends PostCard {
@@ -74,7 +74,6 @@ export function GithubContextProvider({ children }: ContextProviderProps) {
     const post = await api.get(
       `/repos/murilo-souza/github-blog-web-reactjs/issues/${slug}`,
     )
-
     setPost(post.data)
   }
 
