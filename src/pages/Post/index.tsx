@@ -4,8 +4,9 @@ import ReactMarkdown from 'react-markdown/'
 import { useParams } from 'react-router-dom'
 import { PostNameCard } from '../../components/PostNameCard'
 import { useGithubData } from '../../hooks/useGithubData'
-import { Container, PostContent } from './styles'
+import { Container, LoaderContainer, PostContent } from './styles'
 import { formatDateToTimePast } from '../../utils/formatDateToTimepast'
+import { Spinner } from '../../components/Spinner'
 
 export function Post() {
   const { handleCompletePost, post } = useGithubData()
@@ -18,7 +19,9 @@ export function Post() {
   return (
     <Container>
       {post.created_at === undefined ? (
-        <div></div>
+        <LoaderContainer>
+          <Spinner />
+        </LoaderContainer>
       ) : (
         <>
           <PostNameCard
