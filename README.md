@@ -8,11 +8,13 @@
 
 <h2>Stack</h2>
 <ul>
+  <li><a href="https://github.com/colinhacks/zod">Zod</a></li>
   <li><a href="https://axios-http.com/ptbr/docs/intro">Axios</a></li>
   <li><a href="https://pt-br.reactjs.org/">React Js</a></li>
   <li><a href="https://date-fns.org/">Date-fns</a></li>
   <li><a href="https://reactrouter.com/en/main">React Router</a></li>
   <li><a href="https://phosphoricons.com/">Phosphor Icons</a></li>
+  <li><a href="https://react-hook-form.com/">React Hook Form</a></li>
   <li><a href="https://styled-components.com/">Styled Components</a></li>
 </ul>
 
